@@ -20,4 +20,9 @@ class ProductController extends Controller
 
         return response()->json($newProduct, 201); 
     }
+
+    public function getAll(Request $request){
+        $products = Product::all();
+        return response()->json($products, 200);
+    }
 }
