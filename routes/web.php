@@ -8,4 +8,5 @@ Route::get('/', function () {
 });
 
 
-Route::create('/product', [ProductController::class, 'create']);
+Route::post('/product', [ProductController::class, 'create']);
+Route::get('/product', [ProductController::class, 'getAll']);
