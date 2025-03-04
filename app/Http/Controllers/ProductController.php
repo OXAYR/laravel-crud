@@ -25,4 +25,19 @@ class ProductController extends Controller
         $products = Product::all();
         return response()->json($products, 200);
     }
+
+    public function getSingleProduct(Product $product){
+        return response()->json($product , 200);
+    }
+
+    public function edit(Product $product, Request $request){
+        $data = $request->validate([
+            'name' => 'required|string|max:255',
+            'price' => 'required|numeric|min:0',
+            'description' => 'nullable|string',
+            'qty' => 'required|integer|min:1'
+            
+        ]);
+        $product->update($data);
+    }
 }

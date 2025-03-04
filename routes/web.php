@@ -10,3 +10,6 @@ Route::get('/', function () {
 
 Route::post('/product', [ProductController::class, 'create']);
 Route::get('/product', [ProductController::class, 'getAll']);
+Route::put('/product/{product}/edit', [ProductController::class, 'edit']);
+Route::get('/product/{product}',  [ProductController::class, 'getSingleProduct']);
+Route::delete('/product/{product}', [ProductController::class, 'delete']);
