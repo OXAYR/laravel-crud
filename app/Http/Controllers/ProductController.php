@@ -40,4 +40,9 @@ class ProductController extends Controller
         ]);
         $product->update($data);
     }
+
+    public function delete(Product $product){
+        $product->delete();
+        
+    }
 }
