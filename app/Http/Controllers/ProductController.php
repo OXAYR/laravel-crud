@@ -7,13 +7,17 @@ use App\Models\Product;
 
 class ProductController extends Controller
 {
-    public function create(Requests $request){
+    public function create(Request $request) 
+    {
         $data = $request->validate([
-            'name' => 'required',
-            'price' => 'required|decimal:0,2',   // 0 is the minimum and 2 is the maximum
-            'description' => 'nullable',
-            'qty' => 'required|numeric'  // it is neccessary to write the type of the table 
+            'name' => 'required|string|max:255',
+            'price' => 'required|numeric|min:0',
+            'description' => 'nullable|string',
+            'qty' => 'required|integer|min:1' 
         ]);
+
         $newProduct = Product::create($data);
+
+        return response()->json($newProduct, 201); 
     }
 }
